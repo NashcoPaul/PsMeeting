@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description/>
+        <flush_cache>true</flush_cache>
+        <name>Test</name>
+        <run_once>true</run_once>
+        <script><![CDATA[gs.include('GlideRecordExtensionsCC');
+
+var startDate = new GlideDateTime('2013-06-12');
+var endDate = new GlideDateTime('2014-11-28');
+
+
+var incidents = new GlideRecord('incident');
+incidents.addBetweenQuery('sys_created_on', startDate, endDate);
+incidents.addQuery('active', true);
+incidents.query();
+gs.print(incidents.getRowCount());
+
+
+while (incidents.next()) {
+gs.print(incidents.number);
+}
+
+
+var startDate = new GlideDateTime('2013-06-12');
+var endDate = new GlideDateTime('2014-11-28');
+
+
+var incidents = new GlideRecord('incident');
+incidents.addQuery('sys_created_on', '>=', startDate);
+incidents.addQuery('sys_created_on', '<=', endDate);
+incidents.addQuery('active', true);
+incidents.query();
+gs.print(incidents.getRowCount());
+
+while (incidents.next()) {
+gs.print(incidents.number);
+}
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-06-08 20:05:36</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>4d8f22070ff35a00032386bce1050ef9</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Test</sys_name>
+        <sys_package display_value="MyScoped App" source="x_0104_myscoped_ap">7cc7cd470f335a00032386bce1050e69</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="MyScoped App">7cc7cd470f335a00032386bce1050e69</sys_scope>
+        <sys_update_name>sys_script_fix_4d8f22070ff35a00032386bce1050ef9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-06-08 20:54:16</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>
